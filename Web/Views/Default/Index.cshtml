@@ -1,0 +1,31 @@
+﻿@model List<ET.Usuario>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Usuarios</h2>
+
+<a href="~/default/editar">Nuevo Registro</a>
+
+<table style="width:500px">
+    <thead>
+        <tr>
+            <th style="text-align:left;">Nombre</th>
+            <th colspan="2" style="width:150px;text-align:left;">Rol</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var u in Model) 
+    {
+        <tr>
+            <td>@u.Nombre @u.Apellido</td>
+            <td>@u.Rol.Nombre</td>
+            <td style="width:200px;">
+                <a title="Editar" href="~/default/editar/@u.id">E</a>
+                <a title="Eliminar" onclick="return confirm('¿Esta seguro?');" href="~/default/eliminar/@u.id">X</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
